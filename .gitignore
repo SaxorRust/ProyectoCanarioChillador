@@ -1,0 +1,21 @@
+# Environment variables and secrets
+.env
+*.env.local
+
+# Executables and binaries
+wokwi-cli.exe
+*.exe
+*.bin
+*.elf
+*.hex
+
+# Build directories
+build/
+.pio/
+.pioenvs/
+
+# System and temporary files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp

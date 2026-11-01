@@ -1,0 +1,128 @@
+{
+  "version": 1,
+  "author": "Proyecto IoT - Canario Chillador",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": -200,
+      "left": 0,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq7",
+      "top": -160,
+      "left": -220,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq2",
+      "top": -160,
+      "left": 220,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": 60,
+      "left": -220,
+      "attrs": { "temperature": "23.5", "humidity": "50" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 240,
+      "left": -200,
+      "attrs": { "volume": "0.8" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 360,
+      "left": -200,
+      "attrs": { "color": "blue", "label": "SILENCIAR / VISTA", "key": "space" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_g",
+      "top": 180,
+      "left": 230,
+      "attrs": { "color": "green", "label": "NORMAL" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_y",
+      "top": 250,
+      "left": 230,
+      "attrs": { "color": "yellow", "label": "PRECAUCION" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_r",
+      "top": 320,
+      "left": 230,
+      "attrs": { "color": "red", "label": "PELIGRO" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_heater",
+      "top": 390,
+      "left": 230,
+      "attrs": { "color": "orange", "label": "MQ7_HEATER" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+
+    [ "oled:VCC", "esp:3V3", "red", [ "v-10", "h-70", "v120" ] ],
+    [ "oled:GND", "esp:GND.1", "black", [ "v-20", "h-90", "v170" ] ],
+    [ "oled:SDA", "esp:21", "blue", [ "v-30", "h-30", "v180" ] ],
+    [ "oled:SCL", "esp:22", "cyan", [ "v-40", "h-40", "v170" ] ],
+
+    [ "mq7:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "mq7:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "mq7:AOUT", "esp:35", "purple", [ "h30", "v90" ] ],
+
+    [ "mq2:VCC", "esp:5V", "red", [ "v0" ] ],
+    [ "mq2:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "mq2:AOUT", "esp:34", "purple", [ "h-30", "v90" ] ],
+
+    [ "dht:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht:SDA", "esp:4", "gold", [ "h60", "v40" ] ],
+
+    [ "buzzer:2", "esp:27", "orange", [ "h40", "v-80" ] ],
+    [ "buzzer:1", "esp:GND.2", "black", [ "h20", "v10" ] ],
+
+    [ "btn:1.l", "esp:13", "blue", [ "h50", "v-200" ] ],
+    [ "btn:2.l", "esp:GND.2", "black", [ "h30", "v-90" ] ],
+
+    [ "led_g:A", "esp:18", "green", [ "h-80", "v-30" ] ],
+    [ "led_g:C", "esp:GND.2", "black", [ "h-40", "v60" ] ],
+
+    [ "led_y:A", "esp:19", "yellow", [ "h-70", "v-80" ] ],
+    [ "led_y:C", "esp:GND.2", "black", [ "h-50", "v10" ] ],
+
+    [ "led_r:A", "esp:23", "red", [ "h-90", "v-130" ] ],
+    [ "led_r:C", "esp:GND.2", "black", [ "h-30", "v-40" ] ],
+
+    [ "led_heater:A", "esp:25", "orange", [ "h-110", "v-240" ] ],
+    [ "led_heater:C", "esp:GND.2", "black", [ "h-60", "v-90" ] ]
+  ],
+  "dependencies": {
+    "adafruit/Adafruit SSD1306": "2.5.10",
+    "adafruit/Adafruit GFX Library": "1.11.9",
+    "adafruit/DHT sensor library": "1.4.6"
+  }
+}

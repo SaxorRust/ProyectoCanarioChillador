@@ -1,0 +1,5 @@
+el proyecto sera standalone, funcionando unicamente por bluetooth dentro de las posibilidades del plan gratuito de wokwi
+
+tal que el que haga todas las operaciones, estadisticas e interfaz principal, seaa una app de android. este cambio se mantendra como principal y unica forma de conectividad, via blutooth con su app de android
+
+
