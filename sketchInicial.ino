@@ -2,16 +2,7 @@
  * ============================================================================
  * PROYECTO FINAL IoT: "EL CANARIO CHILLADOR"
  * Sistema Autónomo de Detección de Gases y Alerta Temprana Pasiva (Offline / Standalone)
- * 
- * Hardware (Wokwi & Físico):
- *  - ESP32 DevKit V4 (38 pines)
- *  - MQ-7 (Monóxido de Carbono - Ciclo térmico PWM con BJT en GPIO 25, ADC1 en GPIO 35)
- *  - MQ-2 (GLP, Gas Combustible, Humo - ADC1 en GPIO 34)
- *  - DHT11 (Temperatura y Humedad - One-Wire en GPIO 4)
- *  - Pantalla OLED SSD1306 128x64 (I2C: SDA=GPIO 21, SCL=GPIO 22)
- *  - Buzzer Activo / Piezoeléctrico ("El Chillido" - GPIO 27)
- *  - Semáforo LED: Verde (GPIO 18), Amarillo (GPIO 19), Rojo (GPIO 23)
- *  - Pulsador de Silencio / Cambio de Vista (GPIO 13 con INPUT_PULLUP)
+ * autor: Ubaldo Edgar Gonzalez Flores
  * 
  * Principio Operativo:
  *  - 100% Autónomo y Standalone: No depende de Wi-Fi, nube ni Bluetooth para salvar vidas.
@@ -295,6 +286,49 @@ void loop() {
   if (ahora - tUltimaTelemetria >= 1000) {
     tUltimaTelemetria = ahora;
     emitirTelemetriaJSON();
+  }
+
+  // 9. PROCESAMIENTO DE COMANDOS BIDIRECCIONALES (APP ANDROID / TERMINAL)
+  gestionarComandosEntrantes();
+}
+
+// ==========================================
+// RECEPCIÓN DE COMANDOS BIDIRECCIONALES
+// ==========================================
+void procesarComandoTexto(String cmd) {
+  cmd.trim();
+  cmd.toUpperCase();
+  if (cmd.length() == 0) return;
+
+  if (cmd == "MUTE") {
+    buzzerSilenciado = !buzzerSilenciado;
+    if (buzzerSilenciado) {
+      tiempoSilenciado = millis();
+      digitalWrite(PIN_BUZZER, LOW);
+      noTone(PIN_BUZZER);
+      Serial.println(F("[REMOTE] Buzzer silenciado via comando (MUTE)."));
+    } else {
+      Serial.println(F("[REMOTE] Silencio desactivado via comando."));
+    }
+  } else if (cmd == "VISTA") {
+    vistaActual = (vistaActual + 1) % 2;
+    Serial.print(F("[REMOTE] Pantalla OLED cambiada via comando a vista: "));
+    Serial.println(vistaActual);
+  } else if (cmd == "PING" || cmd == "TEST") {
+    emitirTelemetriaJSON();
+  }
+}
+
+void gestionarComandosEntrantes() {
+#ifdef ACTIVAR_BLUETOOTH_FISICO
+  if (SerialBT.available()) {
+    String cmd = SerialBT.readStringUntil('\n');
+    procesarComandoTexto(cmd);
+  }
+#endif
+  if (Serial.available()) {
+    String cmd = Serial.readStringUntil('\n');
+    procesarComandoTexto(cmd);
   }
 }
 

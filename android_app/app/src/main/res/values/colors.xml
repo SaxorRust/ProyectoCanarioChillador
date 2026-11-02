@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores Base Dashboard (Tema Oscuro Industrial) -->
+    <color name="bg_window">#0F141C</color>
+    <color name="bg_card">#1A2230</color>
+    <color name="bg_card_secondary">#222D3E</color>
+    <color name="card_stroke">#2E3D52</color>
+
+    <!-- Marca "Canario Chillador" -->
+    <color name="canario_yellow">#FFD54F</color>
+    <color name="canario_gold">#FFB300</color>
+
+    <!-- Estados del Canario (NOM / OSHA) -->
+    <color name="status_normal">#4CAF50</color>
+    <color name="status_normal_bg">#142B1A</color>
+    <color name="status_normal_stroke">#2E7D32</color>
+
+    <color name="status_caution">#FF9800</color>
+    <color name="status_caution_bg">#362208</color>
+    <color name="status_caution_stroke">#E65100</color>
+
+    <color name="status_danger">#F44336</color>
+    <color name="status_danger_bg">#3B1414</color>
+    <color name="status_danger_stroke">#B71C1C</color>
+
+    <!-- Métricas Específicas -->
+    <color name="sensor_co">#00E5FF</color>
+    <color name="sensor_lpg">#E040FB</color>
+    <color name="sensor_temp">#FF6E40</color>
+    <color name="sensor_hum">#40C4FF</color>
+
+    <!-- Textos y Estados Neutros -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#90A4AE</color>
+    <color name="text_muted">#607D8B</color>
+    <color name="divider_color">#263238</color>
+
+    <!-- Conectividad -->
+    <color name="bt_connected">#00E676</color>
+    <color name="bt_connecting">#FFEA00</color>
+    <color name="bt_disconnected">#78909C</color>
+</resources>

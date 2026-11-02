@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema nativo oscuro optimizado para máxima compatibilidad -->
+    <style name="Theme.CanarioChillador" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/bg_window</item>
+        <item name="android:colorPrimary">@color/canario_gold</item>
+        <item name="android:colorPrimaryDark">@color/bg_window</item>
+        <item name="android:colorAccent">@color/canario_yellow</item>
+        <item name="android:navigationBarColor">@color/bg_window</item>
+        <item name="android:statusBarColor">@color/bg_window</item>
+    </style>
+</resources>

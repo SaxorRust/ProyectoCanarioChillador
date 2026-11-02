@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_window"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ============================================================== -->
+        <!-- HEADER PRINCIPAL Y ESTADO DE ENLACE BLUETOOTH                  -->
+        <!-- ============================================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EL CANARIO CHILLADOR 🐤"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_header_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estación Analítica IoT ISA-101 | ESP32"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_bt_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_badge"
+                android:text="● OFFLINE"
+                android:textColor="@color/bt_disconnected"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Barra Rápida de Conexión Bluetooth -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_bt_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bluetooth: Desconectado"
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_bt_device_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nodo: Canario_Chillador_IoT"
+                    android:textColor="@color/text_muted"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_select_device"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/bg_button_secondary"
+                android:text="Elegir"
+                android:textColor="@color/text_primary"
+                android:textSize="11sp" />
+
+            <Button
+                android:id="@+id/btn_connect_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="Conectar"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- ============================================================== -->
+        <!-- SELECTOR DE NIVELES JERÁRQUICOS NORMA ISA-101.01-2015           -->
+        <!-- ============================================================== -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+            android:layout_marginBottom="14dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_tab_l1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:text="L1: PANORAMA"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_tab_l2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:text="L2: SUPERVISIÓN"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/btn_tab_l3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:text="L3: TENDENCIAS"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/btn_tab_l4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:text="L4: ANALÍTICA"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- ============================================================== -->
+        <!-- CONTENEDOR NIVEL 1: VISIÓN PANORÁMICA (< 5 SEGUNDOS)           -->
+        <!-- ============================================================== -->
+        <LinearLayout
+            android:id="@+id/layout_level1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Tarjeta Hero de Estado Consolidado -->
+            <LinearLayout
+                android:id="@+id/card_hero_alert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_alert_normal"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tv_alert_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="ESTADO SEGURO"
+                        android:textColor="@color/status_normal"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_mute_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge"
+                        android:text="CHILLIDO ACTIVO"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_alert_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Concentraciones en rango inocuo. Atmósfera nominal."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Tarjeta de Diagnóstico Predictivo In Situ -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DIAGNÓSTICO PREDICTIVO RÁPIDO"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ESTADO PREDICTIVO"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_l1_predictive"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ATMÓSFERA ESTABLE"
+                            android:textColor="@color/status_normal"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="CICLO TÉRMICO MQ-7"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_l1_mq7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PURGA (5.0V)"
+                            android:textColor="@color/canario_yellow"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Resumen Instantáneo de Gases -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginEnd="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CO INSTANTÁNEO"
+                        android:textColor="@color/text_muted"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tv_l1_co_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0 PPM"
+                        android:textColor="@color/sensor_co"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:layout_marginStart="6dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GLP / HUMO"
+                        android:textColor="@color/text_muted"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tv_l1_lpg_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 PPM"
+                        android:textColor="@color/sensor_lpg"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- ============================================================== -->
+        <!-- CONTENEDOR NIVEL 2: SUPERVISIÓN DETALLADA DE VARIABLES         -->
+        <!-- ============================================================== -->
+        <LinearLayout
+            android:id="@+id/layout_level2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Card CO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="MONÓXIDO DE CARBONO (CO)"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_co_peak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge"
+                        android:text="Pico: 0.0 ppm"
+                        android:textColor="@color/sensor_co"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp">
+
+                    <TextView
+                        android:id="@+id/tv_co_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0"
+                        android:textColor="@color/sensor_co"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" PPM"
+                        android:textColor="@color/sensor_co"
+                        android:textSize="16sp"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_co_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:max="150"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_co"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Normas NOM-010 / OSHA: Prev ≥ 35 PPM | Evac ≥ 100 PPM"
+                    android:textColor="@color/text_muted"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Card GLP -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="GAS COMBUSTIBLE (GLP / HUMO)"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_lpg_peak"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_badge"
+                        android:text="Pico: 0 ppm"
+                        android:textColor="@color/sensor_lpg"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp">
+
+                    <TextView
+                        android:id="@+id/tv_lpg_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0"
+                        android:textColor="@color/sensor_lpg"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" PPM"
+                        android:textColor="@color/sensor_lpg"
+                        android:textSize="16sp"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_lpg_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:max="1500"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_lpg"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Límite LEL NFPA 58: Prev ≥ 400 PPM | Evac ≥ 1000 PPM"
+                    android:textColor="@color/text_muted"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <!-- Card Ambiente & MQ-7 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONDICIÓN HIGROTÉRMICA Y FILAMENTO"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TEMPERATURA"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_temp_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--.- °C"
+                            android:textColor="@color/sensor_temp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="HUMEDAD RELATIVA"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_hum_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--.- %"
+                            android:textColor="@color/sensor_hum"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/tv_mq7_phase"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="MQ-7: FASE PURGA (5.0V)"
+                        android:textColor="@color/canario_yellow"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_mq7_seconds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 / 60 s"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progress_mq7_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:max="60"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/progress_mq7" />
+            </LinearLayout>
+
+            <!-- Control Remoto HMI -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTROL REMOTO BIDIRECCIONAL"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <Button
+                        android:id="@+id/btn_cmd_mute"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_button_secondary"
+                        android:text="MUTE BUZZER"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btn_cmd_vista"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_button_secondary"
+                        android:text="CAMBIAR OLED"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_cmd_ping"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="PROBAR ENLACE (PING TELEMETRÍA)"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================================== -->
+        <!-- CONTENEDOR NIVEL 3: TENDENCIAS Y GRÁFICAS DE SERIES TEMPORALES -->
+        <!-- ============================================================== -->
+        <LinearLayout
+            android:id="@+id/layout_level3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Selector de Serie para el Canvas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <Button
+                    android:id="@+id/btn_chart_co"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    android:background="@drawable/bg_tab_selected"
+                    android:text="CO (ppm)"
+                    android:textColor="#000000"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_chart_lpg"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:text="GLP (ppm)"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/btn_chart_env"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_tab_unselected"
+                    android:text="T / RH"
+                    android:textColor="@color/text_primary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- Card del Canvas Gráfico Interactivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/tv_chart_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SERIE TEMPORAL: MONÓXIDO DE CARBONO (CO)"
+                    android:textColor="@color/sensor_co"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Canvas Gráfico Nativo -->
+                <com.canario.iot.TimeSeriesChartView
+                    android:id="@+id/chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Toque sobre la curva para inspeccionar lecturas individuales y estampa de tiempo."
+                    android:textColor="@color/text_muted"
+                    android:textSize="9sp" />
+            </LinearLayout>
+
+            <!-- Selector de Ventana Temporal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_secondary"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ventana Histórica:"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp" />
+
+                <Button
+                    android:id="@+id/btn_window_2m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="2 min"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btn_window_10m"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="10 min"
+                    android:textColor="@color/text_primary"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="4dp" />
+
+                <Button
+                    android:id="@+id/btn_window_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_button_primary"
+                    android:text="Todo"
+                    android:textColor="#000000"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================================== -->
+        <!-- CONTENEDOR NIVEL 4: ANALÍTICA PROFUNDA, CUENTAS Y AUDITORÍA     -->
+        <!-- ============================================================== -->
+        <LinearLayout
+            android:id="@+id/layout_level4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Card TWA vs NOM-010 / OSHA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="DOSIS PONDERADA EN TIEMPO (TWA)"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_analytics_twa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0.0"
+                        android:textColor="@color/text_primary"
+                        android:textSize="28sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" PPM TWA (CO)"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_analytics_nom010"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NOM-010-STPS (VLE-PPT 25 PPM): 0.0% consumido"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_analytics_osha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="OSHA PEL (TWA 50 PPM): 0.0% consumido"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Card Derivada Temporal (dPPM/dt) y Correlación Higrotérmica -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CINÉTICA DE GAS Y DISPERSIÓN HIGROTÉRMICA"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="VELOCIDAD 𝑑PPM/𝑑t (CO)"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_analytics_dcodt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+0.00 PPM/s"
+                            android:textColor="@color/sensor_co"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="VELOCIDAD 𝑑PPM/𝑑t (GLP)"
+                            android:textColor="@color/text_muted"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:id="@+id/tv_analytics_dlpgdt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+0.00 PPM/s"
+                            android:textColor="@color/sensor_lpg"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tv_analytics_pearson"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Correlación Pearson: r(CO, Temp) = 0.00 | r(CO, RH) = 0.00"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/tv_analytics_deriva"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Diagnóstico Quimiorresistencia: DESACOPLADO (SEÑAL PURA)"
+                    android:textColor="@color/status_normal"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="2dp" />
+            </LinearLayout>
+
+            <!-- Card Conclusiones e Inferencias Diagnósticas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="14dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INFERENCIAS Y CONCLUSIONES PERICIALES"
+                    android:textColor="@color/canario_yellow"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tv_analytics_conclusion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Evaluando condiciones..."
+                    android:textColor="@color/text_primary"
+                    android:textSize="12sp"
+                    android:lineSpacingMultiplier="1.2" />
+
+                <TextView
+                    android:id="@+id/tv_analytics_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Acción recomendada: Supervisión normal."
+                    android:textColor="@color/canario_gold"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+
+            <!-- Card de Auditoría y Exportación -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_secondary"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tv_analytics_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Muestras almacenadas en SQLite: 0"
+                    android:textColor="@color/text_muted"
+                    android:textSize="11sp"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_export_csv"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_button_secondary"
+                        android:text="EXPORTAR CSV"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+
+                    <Button
+                        android:id="@+id/btn_export_json"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_button_secondary"
+                        android:text="EXPORTAR JSON"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_clear_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:text="LIMPIAR BASE DE DATOS"
+                    android:textColor="@color/status_danger"
+                    android:textSize="10sp"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Consola de tramas raw para depuración rápida (visible siempre al fondo) -->
+        <TextView
+            android:id="@+id/tv_raw_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Esperando telemetría del ESP32..."
+            android:textColor="@color/text_muted"
+            android:textSize="10sp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+</ScrollView>

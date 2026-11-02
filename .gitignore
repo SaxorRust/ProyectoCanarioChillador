@@ -8,6 +8,9 @@ wokwi-cli.exe
 *.bin
 *.elf
 *.hex
+*.class
+*.keystore
+*.jks
 
 # Build directories
 build/

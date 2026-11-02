@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">El Canario Chillador</string>
+    <string name="app_subtitle">Monitor IoT de Gases y Alerta Temprana</string>
+
+    <!-- Conexión Bluetooth -->
+    <string name="bt_btn_connect">Conectar</string>
+    <string name="bt_btn_disconnect">Desconectar</string>
+    <string name="bt_btn_select">Elegir Dispositivo</string>
+    <string name="bt_status_disconnected">Estado: Desconectado</string>
+    <string name="bt_status_connecting">Estado: Conectando...</string>
+    <string name="bt_status_connected">Estado: Conectado a %s</string>
+    <string name="bt_no_device_selected">Ningún dispositivo seleccionado</string>
+    <string name="bt_device_target_default">Canario_Chillador_IoT</string>
+
+    <!-- Estados del Canario -->
+    <string name="state_normal_title">ESTADO SEGURO</string>
+    <string name="state_normal_desc">Concentraciones de gas en rango inocuo. Nodo seguro.</string>
+    <string name="state_caution_title">PRECAUCIÓN / PURGA</string>
+    <string name="state_caution_desc">Ciclo térmico MQ-7 activo o gas en umbral preventivo.</string>
+    <string name="state_danger_title">¡PELIGRO CRÍTICO!</string>
+    <string name="state_danger_desc">¡EVACUACIÓN! Niveles nocivos de gas detectados in situ.</string>
+
+    <!-- Sensores de Gas -->
+    <string name="sensor_co_title">Monóxido de Carbono (CO)</string>
+    <string name="sensor_co_unit">PPM</string>
+    <string name="sensor_co_limits">NOM/OSHA: Prev &gt;= 35 | Evac &gt;= 100</string>
+
+    <string name="sensor_lpg_title">Gas Combustible (GLP / Humo)</string>
+    <string name="sensor_lpg_unit">PPM</string>
+    <string name="sensor_lpg_limits">LEL: Prev &gt;= 400 | Evac &gt;= 1000</string>
+
+    <!-- Sensores Ambientales y Ciclo Térmico -->
+    <string name="sensor_temp_title">Temperatura</string>
+    <string name="sensor_hum_title">Humedad Relativa</string>
+    <string name="mq7_cycle_title">Ciclo Térmico MQ-7</string>
+    <string name="mq7_fase_purga">PURGA (5.0V RMS)</string>
+    <string name="mq7_fase_medicion">MEDICIÓN (1.4V RMS)</string>
+
+    <!-- Comandos HMI Remotos -->
+    <string name="hmi_title">Control Remoto del Nodo</string>
+    <string name="btn_mute">Silenciar (MUTE)</string>
+    <string name="btn_unmute">Activar Alarma</string>
+    <string name="btn_switch_view">Cambiar Vista OLED</string>
+    <string name="btn_ping">Test Enlace</string>
+
+    <!-- Diálogos y Permisos -->
+    <string name="perm_bt_title">Permisos de Bluetooth Requeridos</string>
+    <string name="perm_bt_message">Para comunicarse con el ESP32 Canario Chillador, se requiere conceder acceso a Bluetooth.</string>
+    <string name="dialog_select_device_title">Dispositivos Bluetooth Vinculados</string>
+    <string name="dialog_no_paired_devices">No hay dispositivos vinculados. Vincula el ESP32 en Ajustes de Android primero.</string>
+</resources>

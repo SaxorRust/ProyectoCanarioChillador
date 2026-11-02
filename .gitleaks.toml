@@ -1,0 +1,8 @@
+[allowlist]
+description = "Archivos de desarrollo local y fixtures ignorados para escaneo de secretos"
+paths = [
+    '''^\.env$''',
+    '''^\.env\.local$''',
+    '''^android_app/debug\.keystore$''',
+    '''^android_app/ci\.keystore$'''
+]

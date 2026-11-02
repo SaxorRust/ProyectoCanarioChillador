@@ -49,9 +49,14 @@ Inspirado en la histórica metáfora del *canario en la mina de carbón*, este s
 
 ```
 proyectoFinal_IOT/
+├── android_app/            # Aplicación Android nativa para monitoreo y control Bluetooth
+│   ├── app/                # Código fuente Java, layouts XML, recursos y manifest
+│   ├── dist/               # APK final compilado y firmado listo para instalar
+│   ├── build_apk.ps1       # Script de compilación ultrarrápida automatizada
+│   └── local.properties    # Configuración de ruta al Android SDK (U:\ANDROIDsdk)
 ├── diagram.json            # Circuito completo y diagramación para Wokwi
 ├── diagramaInicial.json    # Respaldo del circuito de simulación
-├── sketchInicial.ino       # Firmware C++ completo (FSM, ADC1, HMI, JSON)
+├── sketchInicial.ino       # Firmware C++ completo (FSM, ADC1, HMI, JSON, Bluetooth)
 ├── libraries.txt           # Dependencias para el simulador Wokwi
 ├── wokwi.toml              # Archivo de configuración para Wokwi CLI
 ├── Consideraciones.txt     # Alcance standalone y enlace Bluetooth a Android
@@ -62,7 +67,33 @@ proyectoFinal_IOT/
 
 ---
 
-## 5. Simulación y Ejecución
+## 5. Aplicación Android (Estación Base Bluetooth)
+
+La aplicación Android permite la **comunicación directa y en tiempo real** con el ESP32 a través de Bluetooth Clásico SPP (Serial Port Profile).
+
+### Características Principales:
+* **Conexión Directa:** Búsqueda y auto-conexión al dispositivo `Canario_Chillador_IoT` o selector rápido de dispositivos Bluetooth vinculados.
+* **Telemetría en Vivo (1 Hz):** Visualización reactiva de Monóxido de Carbono (CO), Gases Combustibles (GLP/Humo), Temperatura, Humedad y Ciclo Térmico del sensor MQ-7.
+* **Semáforo y Alertas Visuales:** Detección de estados `NORMAL` (Verde), `PRECAUCION` (Ámbar) y `PELIGRO` (Rojo) basados en la normativa NOM/OSHA.
+* **Control Remoto Bidireccional:**
+  * **MUTE BUZZER:** Silencia o reactiva la alarma acústica in situ del ESP32.
+  * **CAMBIAR OLED:** Conmuta de forma remota la pantalla OLED del nodo entre la vista de dashboard y la de diagnóstico técnico.
+  * **PROBAR ENLACE:** Solicita un paquete de confirmación inmediato al nodo.
+
+### Instalación Inmediata del APK:
+El APK compilado y firmado se encuentra en:
+```
+android_app/dist/CanarioChillador-v1.0.apk
+```
+Para instalarlo por cable con ADB:
+```powershell
+& "U:\ANDROIDsdk\platform-tools\adb.exe" install -r "android_app\dist\CanarioChillador-v1.0.apk"
+```
+O simplemente transfiriendo el archivo `.apk` a tu teléfono Android.
+
+---
+
+## 6. Simulación y Ejecución
 
 ### Opción A: Wokwi Web / Extensión VS Code
 1. Abre [`diagram.json`](diagram.json) y [`sketchInicial.ino`](sketchInicial.ino) en el simulador.

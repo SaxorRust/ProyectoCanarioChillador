@@ -1,0 +1,238 @@
+name: 🐤 DevSecOps, OWASP Security Audit & CI Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  # ════════════════════════════════════════════════════════════════════════════
+  # 1. DETECCIÓN DE SECRETOS, TOKENS Y CLAVES PRIVADAS (Gitleaks)
+  # ════════════════════════════════════════════════════════════════════════════
+  secrets-audit:
+    name: 🔑 Detección de Secretos (Gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Escaneo de secretos con Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_ENABLE_SUMMARY: true
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # 2. CALIDAD DE CÓDIGO Y ANÁLISIS ESTÁTICO DE FIRMWARE Y CIRCUITO
+  # ════════════════════════════════════════════════════════════════════════════
+  code-quality:
+    name: ⚡ Calidad de Código (Cppcheck & Wokwi Lint)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Cppcheck (Análisis Estático C/C++)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cppcheck
+
+      - name: Ejecutar Cppcheck sobre Firmware ESP32
+        run: |
+          cppcheck --enable=warning,style,performance,portability \
+                   --inline-suppr \
+                   --error-exitcode=1 \
+                   --language=c++ \
+                   --suppress=missingIncludeSystem \
+                   sketchInicial.ino
+
+      - name: Instalar Node.js y Wokwi CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validar Diagrama de Circuito Wokwi
+        run: |
+          npm install -g @wokwi/cli
+          wokwi-cli lint diagram.json
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # 3. ANÁLISIS SAST Y SEGURIDAD VÍA OWASP (Semgrep & Flawfinder)
+  # ════════════════════════════════════════════════════════════════════════════
+  sast-owasp:
+    name: 🔍 SAST & OWASP Top 10 (Semgrep & Flawfinder)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python para herramientas de seguridad
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar Semgrep y Flawfinder
+        run: |
+          python -m pip install --upgrade pip
+          pip install semgrep flawfinder
+
+      - name: Escaneo OWASP Top 10 y Reglas Java/C en Semgrep
+        run: |
+          semgrep scan --config "p/owasp-top-ten" \
+                       --config "p/java" \
+                       --config "p/c" \
+                       --metrics=off \
+                       --error
+
+      - name: Auditoría de Seguridad C/C++ con Flawfinder
+        run: |
+          flawfinder --minlevel=2 --error-level=4 sketchInicial.ino
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # 4. AUDITORÍA DE DEPENDENCIAS Y VERSIONES (OWASP Dependency-Check & Trivy)
+  # ════════════════════════════════════════════════════════════════════════════
+  sca-dependency-audit:
+    name: 📦 Auditoría de Dependencias (OWASP Dependency-Check & Trivy)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Escaneo de Vulnerabilidades con Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.29.0
+        with:
+          scan-type: 'fs'
+          ignore-unfixed: true
+          format: 'table'
+          severity: 'HIGH,CRITICAL'
+          exit-code: '0'
+
+      - name: Auditoría OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: 'El Canario Chillador'
+          path: '.'
+          format: 'HTML'
+          args: >
+            --enableRetired
+            --failOnCVSS 8
+
+      - name: Archivar Reporte de Auditoría OWASP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: owasp-dependency-check-report
+          path: reports/dependency-check-report.html
+          if-no-files-found: ignore
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # 5. COMPILACIÓN AUTOMATIZADA: FIRMWARE ESP32 (Arduino CLI)
+  # ════════════════════════════════════════════════════════════════════════════
+  build-firmware:
+    name: 🔌 Compilación Firmware ESP32 (Arduino CLI)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Configurar Núcleo ESP32 e Instalar Librerías
+        run: |
+          arduino-cli config init
+          arduino-cli config add board_manager.additional_urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32@2.0.14
+          arduino-cli lib install "Adafruit GFX Library"@1.11.9
+          arduino-cli lib install "Adafruit SSD1306"@2.5.9
+          arduino-cli lib install "DHT sensor library"@1.4.6
+
+      - name: Compilar Sketch para ESP32 Dev Module
+        run: |
+          # Preparar directorio de sketch estándar de Arduino
+          mkdir -p build_sketch
+          cp sketchInicial.ino build_sketch/build_sketch.ino
+          arduino-cli compile --fqbn esp32:esp32:esp32 build_sketch/
+
+  # ════════════════════════════════════════════════════════════════════════════
+  # 6. COMPILACIÓN AUTOMATIZADA: APP ANDROID (SDK & Gradle)
+  # ════════════════════════════════════════════════════════════════════════════
+  build-android:
+    name: 📱 Compilación Aplicación Android (Java & Gradle)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Configurar Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: '11076708'
+
+      - name: Instalar Componentes del Android SDK
+        run: |
+          sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Compilar y Empaquetar APK Android
+        run: |
+          cd android_app
+          # Usar aapt2 y javac de la plataforma instalada
+          export ANDROID_JAR="$ANDROID_HOME/platforms/android-35/android.jar"
+          export AAPT2="$ANDROID_HOME/build-tools/35.0.0/aapt2"
+          export D8="$ANDROID_HOME/build-tools/35.0.0/d8"
+          export ZIPALIGN="$ANDROID_HOME/build-tools/35.0.0/zipalign"
+          export APKSIGNER="$ANDROID_HOME/build-tools/35.0.0/apksigner"
+
+          mkdir -p app/build/res_compiled app/build/gen app/build/classes app/build/dex dist
+
+          echo "[CI] 1. Compilando recursos con aapt2..."
+          $AAPT2 compile --dir app/src/main/res -o app/build/res_compiled/res.zip
+
+          echo "[CI] 2. Enlazando recursos..."
+          $AAPT2 link -o app/build/app-base.apk -I $ANDROID_JAR \
+            --manifest app/src/main/AndroidManifest.xml \
+            --java app/build/gen \
+            --auto-add-overlay \
+            app/build/res_compiled/res.zip
+
+          echo "[CI] 3. Compilando Java con javac..."
+          javac -cp $ANDROID_JAR -d app/build/classes \
+            app/src/main/java/com/canario/iot/*.java \
+            app/build/gen/com/canario/iot/R.java
+
+          echo "[CI] 4. Generando bytecode Dex con D8..."
+          $D8 --lib $ANDROID_JAR --output app/build/dex $(find app/build/classes -name "*.class")
+
+          echo "[CI] 5. Empaquetando classes.dex..."
+          cp app/build/app-base.apk app/build/app-unaligned.apk
+          cd app/build/dex
+          zip -u ../app-unaligned.apk classes.dex
+          cd ../../..
+
+          echo "[CI] 6. Alineando y firmando..."
+          $ZIPALIGN -f -p 4 android_app/app/build/app-unaligned.apk android_app/dist/CanarioChillador-ci.apk
+          
+          keytool -genkey -v -keystore android_app/ci.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 1000 -dname "CN=CI Debug,O=Android,C=US"
+          $APKSIGNER sign --ks android_app/ci.keystore --ks-pass pass:android --key-pass pass:android android_app/dist/CanarioChillador-ci.apk
+          $APKSIGNER verify android_app/dist/CanarioChillador-ci.apk
+
+      - name: Archivar Binario APK Generado por CI
+        uses: actions/upload-artifact@v4
+        with:
+          name: CanarioChillador-ci-apk
+          path: android_app/dist/CanarioChillador-ci.apk
