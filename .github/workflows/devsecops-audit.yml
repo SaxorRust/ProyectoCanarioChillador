@@ -102,7 +102,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Escaneo de Vulnerabilidades con Aqua Security Trivy
-        uses: aquasecurity/trivy-action@0.28.0
+        uses: aquasecurity/trivy-action@master
         with:
           scan-type: 'fs'
           ignore-unfixed: true
@@ -209,16 +209,14 @@ jobs:
 
           echo "[CI] 5. Empaquetando classes.dex..."
           cp app/build/app-base.apk app/build/app-unaligned.apk
-          cd app/build/dex
-          zip -u ../app-unaligned.apk classes.dex
-          cd ../../..
+          (cd app/build/dex && zip -u ../app-unaligned.apk classes.dex)
 
           echo "[CI] 6. Alineando y firmando..."
-          $ZIPALIGN -f -p 4 android_app/app/build/app-unaligned.apk android_app/dist/CanarioChillador-ci.apk
+          $ZIPALIGN -f -p 4 app/build/app-unaligned.apk dist/CanarioChillador-ci.apk
           
-          keytool -genkey -v -keystore android_app/ci.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 1000 -dname "CN=CI Debug,O=Android,C=US"
-          $APKSIGNER sign --ks android_app/ci.keystore --ks-pass pass:android --key-pass pass:android android_app/dist/CanarioChillador-ci.apk
-          $APKSIGNER verify android_app/dist/CanarioChillador-ci.apk
+          keytool -genkey -v -keystore ci.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 1000 -dname "CN=CI Debug,O=Android,C=US"
+          $APKSIGNER sign --ks ci.keystore --ks-pass pass:android --key-pass pass:android dist/CanarioChillador-ci.apk
+          $APKSIGNER verify dist/CanarioChillador-ci.apk
 
       - name: Archivar Binario APK Generado por CI
         uses: actions/upload-artifact@v4
