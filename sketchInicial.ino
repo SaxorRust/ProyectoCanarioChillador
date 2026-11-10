@@ -132,6 +132,8 @@ unsigned long tUltimaTelemetria = 0;
 unsigned long tUltimoDHT = 0;
 unsigned long tUltimoBuzzer = 0;
 unsigned long tUltimoDebounceBoton = 0;
+unsigned long tUltimoOLED = 0;
+unsigned long tReintentoI2C = 0;
 bool estadoBuzzerChillido = false;
 
 // ==========================================
@@ -516,8 +518,6 @@ void loop() {
   gestionarActuadoresLocales(ahora);
 
   // 7. ACTUALIZACIÓN VISUAL DE LA PANTALLA OLED (cada 250 ms si está conectada)
-  static unsigned long tUltimoOLED = 0;
-  static unsigned long tReintentoI2C = 0;
   if (oledConectada) {
     if (ahora - tUltimoOLED >= 250) {
       tUltimoOLED = ahora;
