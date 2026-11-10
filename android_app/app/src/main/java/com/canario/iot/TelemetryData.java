@@ -111,4 +111,8 @@ public class TelemetryData {
     public boolean isNormal() {
         return "NORMAL".equalsIgnoreCase(alerta);
     }
+
+    public boolean isPrecalentando() {
+        return "PRECALENTANDO".equalsIgnoreCase(alerta);
+    }
 }

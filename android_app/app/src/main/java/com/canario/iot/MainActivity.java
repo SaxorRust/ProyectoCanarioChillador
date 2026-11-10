@@ -29,7 +29,7 @@ import java.util.Locale;
  * Integra base de datos local SQLite, motor analítico estadístico (TWA, derivada dPPM/dt,
  * correlación cruzada de Pearson) y gráficas de series de tiempo interactivas en Canvas.
  */
-public class MainActivity extends Activity implements BluetoothManager.BluetoothListener {
+public class MainActivity extends Activity implements TelemetryService.ServiceCallback {
 
     private static final int PERMISSION_REQUEST_CODE = 1001;
 
@@ -109,17 +109,58 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
         setupNavigationTabs();
         setupListeners();
 
-        btManager = new BluetoothManager(this);
+        // Iniciar Servicio en Primer Plano para persistencia ininterrumpida
+        startTelemetryService();
+
+        // Conectar callbacks de telemetría y Bluetooth
+        TelemetryService.setCallback(this);
+        if (TelemetryService.getInstance() != null) {
+            btManager = TelemetryService.getInstance().getBluetoothManager();
+        } else {
+            btManager = new BluetoothManager(null);
+        }
 
         // Cargar lecturas históricas previas de SQLite para las gráficas
         loadHistoryFromDatabase();
 
-        // Verificar y solicitar permisos de Bluetooth
+        // Verificar y solicitar permisos de Bluetooth y Notificaciones
         if (!hasRequiredPermissions()) {
             requestPermissions();
         } else {
             attemptAutoDetectDevice();
         }
+    }
+
+    private void startTelemetryService() {
+        Intent serviceIntent = new Intent(this, TelemetryService.class);
+        serviceIntent.setAction(TelemetryService.ACTION_START);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startForegroundService(serviceIntent);
+        } else {
+            startService(serviceIntent);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TelemetryService.setCallback(this);
+        loadHistoryFromDatabase();
+
+        if (TelemetryService.getInstance() != null) {
+            btManager = TelemetryService.getInstance().getBluetoothManager();
+            if (btManager != null) {
+                targetDevice = btManager.getCurrentDevice();
+                updateTargetDeviceInfo();
+                onBluetoothStateChanged(btManager.getState(), "Enlace en segundo plano activo");
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        TelemetryService.setCallback(null);
     }
 
     private void initViews() {
@@ -243,7 +284,11 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
             DeviceDialog.show(this, btManager, device -> {
                 targetDevice = device;
                 updateTargetDeviceInfo();
-                btManager.connect(targetDevice);
+                if (TelemetryService.getInstance() != null) {
+                    TelemetryService.getInstance().connect(targetDevice);
+                } else if (btManager != null) {
+                    btManager.connect(targetDevice);
+                }
             });
         });
 
@@ -253,20 +298,32 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
                 requestPermissions();
                 return;
             }
-            int state = btManager.getState();
+            int state = (btManager != null) ? btManager.getState() : BluetoothManager.STATE_DISCONNECTED;
             if (state == BluetoothManager.STATE_CONNECTED || state == BluetoothManager.STATE_CONNECTING) {
-                btManager.disconnect();
+                if (TelemetryService.getInstance() != null) {
+                    TelemetryService.getInstance().disconnect();
+                } else if (btManager != null) {
+                    btManager.disconnect();
+                }
             } else {
-                if (targetDevice == null) {
+                if (targetDevice == null && btManager != null) {
                     targetDevice = btManager.findDefaultCanarioDevice();
                 }
                 if (targetDevice != null) {
-                    btManager.connect(targetDevice);
+                    if (TelemetryService.getInstance() != null) {
+                        TelemetryService.getInstance().connect(targetDevice);
+                    } else if (btManager != null) {
+                        btManager.connect(targetDevice);
+                    }
                 } else {
                     DeviceDialog.show(this, btManager, device -> {
                         targetDevice = device;
                         updateTargetDeviceInfo();
-                        btManager.connect(targetDevice);
+                        if (TelemetryService.getInstance() != null) {
+                            TelemetryService.getInstance().connect(targetDevice);
+                        } else if (btManager != null) {
+                            btManager.connect(targetDevice);
+                        }
                     });
                 }
             }
@@ -275,25 +332,28 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
         // Comandos Remotos
         btnCmdMute.setOnClickListener(v -> {
             if (ensureConnected()) {
-                if (btManager.send("MUTE")) {
-                    Toast.makeText(this, "Comando enviado: MUTE", Toast.LENGTH_SHORT).show();
-                }
+                boolean ok = (TelemetryService.getInstance() != null)
+                        ? TelemetryService.getInstance().sendCommand("MUTE")
+                        : (btManager != null && btManager.send("MUTE"));
+                if (ok) Toast.makeText(this, "Comando enviado: MUTE", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnCmdVista.setOnClickListener(v -> {
             if (ensureConnected()) {
-                if (btManager.send("VISTA")) {
-                    Toast.makeText(this, "Comando enviado: CAMBIAR PANTALLA", Toast.LENGTH_SHORT).show();
-                }
+                boolean ok = (TelemetryService.getInstance() != null)
+                        ? TelemetryService.getInstance().sendCommand("VISTA")
+                        : (btManager != null && btManager.send("VISTA"));
+                if (ok) Toast.makeText(this, "Comando enviado: CAMBIAR PANTALLA", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnCmdPing.setOnClickListener(v -> {
             if (ensureConnected()) {
-                if (btManager.send("PING")) {
-                    Toast.makeText(this, "Ping enviado al Canario", Toast.LENGTH_SHORT).show();
-                }
+                boolean ok = (TelemetryService.getInstance() != null)
+                        ? TelemetryService.getInstance().sendCommand("PING")
+                        : (btManager != null && btManager.send("PING"));
+                if (ok) Toast.makeText(this, "Ping enviado al Canario", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -402,20 +462,44 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
     private void exportAuditFile(boolean isCsv) {
         try {
             File exported = isCsv ? dbHelper.exportToCsv(this) : dbHelper.exportToJson(this);
+            String mimeType = isCsv ? "text/csv" : "application/json";
+
+            // 1. Guardar permanentemente en la carpeta pública Descargas (Downloads) usando MediaStore en Android 10+
+            boolean guardadoEnDescargas = TelemetryDbHelper.saveToPublicDownloads(this, exported.getName(), mimeType, exported);
+
+            // 2. Obtener URI del ContentProvider nativo (CanarioFileProvider)
+            Uri contentUri = CanarioFileProvider.getUriForFile(exported);
+
+            // 3. Crear Intent estricto de archivo (sin EXTRA_TEXT para que Quick Share no lo reduzca a solo texto)
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType(isCsv ? "text/csv" : "application/json");
-            Uri fileUri = Uri.fromFile(exported);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, fileUri);
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Bitácora de Telemetría - El Canario Chillador");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Registro histórico de telemetría y concentraciones del ESP32.");
-            startActivity(Intent.createChooser(shareIntent, "Compartir Bitácora"));
+            shareIntent.setType(mimeType);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, exported.getName());
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            // 4. Mensaje claro al usuario
+            String msg = guardadoEnDescargas
+                    ? "¡Archivo guardado en Descargas!\n" + exported.getName()
+                    : "Guardado en almacenamiento:\n" + exported.getAbsolutePath();
+            Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
+
+            // 5. Lanzar selector de compartir
+            try {
+                Intent chooser = Intent.createChooser(shareIntent, "Enviar archivo " + exported.getName());
+                chooser.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                startActivity(chooser);
+            } catch (Exception ignored) {
+            }
         } catch (Exception e) {
             Toast.makeText(this, "Error al exportar: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     private boolean ensureConnected() {
-        if (btManager.getState() != BluetoothManager.STATE_CONNECTED) {
+        BluetoothManager mgr = (TelemetryService.getInstance() != null)
+                ? TelemetryService.getInstance().getBluetoothManager()
+                : btManager;
+        if (mgr == null || mgr.getState() != BluetoothManager.STATE_CONNECTED) {
             Toast.makeText(this, "Conecta el ESP32 por Bluetooth primero", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -446,88 +530,78 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
     }
 
     // =========================================================================
-    // CALLBACKS DE BLUETOOTH MANAGER
+    // CALLBACKS DE TELEMETRY SERVICE (BLUETOOTH & DATOS)
     // =========================================================================
     @SuppressLint("MissingPermission")
     @Override
-    public void onStateChanged(int state, String message) {
-        switch (state) {
-            case BluetoothManager.STATE_DISCONNECTED:
-                tvBtBadge.setText("● OFFLINE");
-                tvBtBadge.setTextColor(getColor(R.color.bt_disconnected));
-                tvBtStatus.setText("Bluetooth: Desconectado");
-                btnConnectToggle.setText("Conectar");
-                btnConnectToggle.setBackgroundResource(R.drawable.bg_button_primary);
-                btnConnectToggle.setTextColor(0xFF000000);
-                break;
+    public void onBluetoothStateChanged(int state, String message) {
+        runOnUiThread(() -> {
+            switch (state) {
+                case BluetoothManager.STATE_DISCONNECTED:
+                    tvBtBadge.setText("● OFFLINE");
+                    tvBtBadge.setTextColor(getColor(R.color.bt_disconnected));
+                    tvBtStatus.setText("Bluetooth: Desconectado");
+                    btnConnectToggle.setText("Conectar");
+                    btnConnectToggle.setBackgroundResource(R.drawable.bg_button_primary);
+                    btnConnectToggle.setTextColor(0xFF000000);
+                    break;
 
-            case BluetoothManager.STATE_CONNECTING:
-                tvBtBadge.setText("● CONECTANDO");
-                tvBtBadge.setTextColor(getColor(R.color.bt_connecting));
-                tvBtStatus.setText(message);
-                btnConnectToggle.setText("Cancelar");
-                btnConnectToggle.setBackgroundResource(R.drawable.bg_button_secondary);
-                btnConnectToggle.setTextColor(getColor(R.color.text_primary));
-                break;
+                case BluetoothManager.STATE_CONNECTING:
+                    tvBtBadge.setText("● CONECTANDO");
+                    tvBtBadge.setTextColor(getColor(R.color.bt_connecting));
+                    tvBtStatus.setText(message);
+                    btnConnectToggle.setText("Cancelar");
+                    btnConnectToggle.setBackgroundResource(R.drawable.bg_button_secondary);
+                    btnConnectToggle.setTextColor(getColor(R.color.text_primary));
+                    break;
 
-            case BluetoothManager.STATE_CONNECTED:
-                tvBtBadge.setText("● EN VIVO");
-                tvBtBadge.setTextColor(getColor(R.color.bt_connected));
-                String devName = BluetoothManager.getDeviceDisplayName(targetDevice);
-                tvBtStatus.setText("Conectado: " + devName);
-                btnConnectToggle.setText("Desconectar");
-                btnConnectToggle.setBackgroundResource(R.drawable.bg_button_secondary);
-                btnConnectToggle.setTextColor(getColor(R.color.text_primary));
-                Toast.makeText(this, "Enlace establecido con " + devName, Toast.LENGTH_SHORT).show();
-                break;
+                case BluetoothManager.STATE_CONNECTED:
+                    tvBtBadge.setText("● EN VIVO");
+                    tvBtBadge.setTextColor(getColor(R.color.bt_connected));
+                    String devName = BluetoothManager.getDeviceDisplayName(targetDevice);
+                    tvBtStatus.setText("Conectado: " + devName);
+                    btnConnectToggle.setText("Desconectar");
+                    btnConnectToggle.setBackgroundResource(R.drawable.bg_button_secondary);
+                    btnConnectToggle.setTextColor(getColor(R.color.text_primary));
+                    break;
 
-            case BluetoothManager.STATE_ERROR:
-                tvBtBadge.setText("● ERROR");
-                tvBtBadge.setTextColor(getColor(R.color.status_danger));
-                tvBtStatus.setText(message);
-                btnConnectToggle.setText("Reintentar");
-                btnConnectToggle.setBackgroundResource(R.drawable.bg_button_primary);
-                btnConnectToggle.setTextColor(0xFF000000);
-                break;
-        }
+                case BluetoothManager.STATE_ERROR:
+                    tvBtBadge.setText("● ERROR");
+                    tvBtBadge.setTextColor(getColor(R.color.status_danger));
+                    tvBtStatus.setText(message);
+                    btnConnectToggle.setText("Reintentar");
+                    btnConnectToggle.setBackgroundResource(R.drawable.bg_button_primary);
+                    btnConnectToggle.setTextColor(0xFF000000);
+                    break;
+            }
+        });
     }
 
     @Override
-    public void onDataReceived(String rawLine) {
-        String timeStr = timeFormat.format(new Date());
-        tvRawJson.setText("[" + timeStr + "] " + rawLine);
+    public void onTelemetryReceived(TelemetryData data, String rawLine) {
+        runOnUiThread(() -> {
+            String timeStr = timeFormat.format(new Date());
+            tvRawJson.setText("[" + timeStr + "] " + rawLine);
 
-        try {
-            TelemetryData data = TelemetryData.fromJson(rawLine);
-
-            // 1. Persistir atómicamente en SQLite
-            dbHelper.insertReading(data);
             sessionReadings.add(data);
-
-            // Mantener ventana en memoria si es demasiado extensa
             if (sessionReadings.size() > 5000) {
                 sessionReadings.remove(0);
             }
 
-            // 2. Renderizar Nivel 1 y Nivel 2
             renderTelemetry(data);
 
-            // 3. Si estamos en Nivel 3 o 4, refrescar análisis dinámicamente
             if (layoutLevel3.getVisibility() == View.VISIBLE) {
                 refreshChart();
             }
             if (layoutLevel4.getVisibility() == View.VISIBLE) {
                 refreshAnalytics(data);
             }
-
-        } catch (Exception e) {
-            tvRawJson.setText("[" + timeStr + "] RESP: " + rawLine);
-        }
+        });
     }
 
     @Override
-    public void onError(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    public void onBluetoothError(String errorMessage) {
+        runOnUiThread(() -> Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show());
     }
 
     // =========================================================================
@@ -535,7 +609,12 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
     // =========================================================================
     private void renderTelemetry(TelemetryData data) {
         // --- NIVEL 1: PANORAMA RÁPIDO (< 5 SEGUNDOS) ---
-        if (data.isPeligro()) {
+        if (data.isPrecalentando()) {
+            cardHeroAlert.setBackgroundResource(R.drawable.bg_card_secondary);
+            tvAlertTitle.setText("PRECALENTANDO SILICIO");
+            tvAlertTitle.setTextColor(getColor(R.color.canario_yellow));
+            tvAlertDesc.setText("Estabilizando filamentos térmicos MQ-2 y MQ-7 (" + data.getSegundosFase() + "/45 s). Por favor mantenga en aire ventilado.");
+        } else if (data.isPeligro()) {
             cardHeroAlert.setBackgroundResource(R.drawable.bg_card_alert_danger);
             tvAlertTitle.setText("¡PELIGRO: EVACUAR!");
             tvAlertTitle.setTextColor(getColor(R.color.status_danger));
@@ -589,11 +668,18 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
         tvTempValue.setText(String.format(Locale.US, "%.1f °C", data.getTemperatura()));
         tvHumValue.setText(String.format(Locale.US, "%.0f %%", data.getHumedad()));
 
-        int segMax = esPurga ? 60 : 90;
-        tvMq7Phase.setText(esPurga ? "MQ-7: FASE PURGA (5.0V)" : "MQ-7: FASE MEDICIÓN (1.4V)");
-        tvMq7Seconds.setText(data.getSegundosFase() + " / " + segMax + " s");
-        progressMq7Bar.setMax(segMax);
-        progressMq7Bar.setProgress(data.getSegundosFase());
+        if (data.isPrecalentando()) {
+            tvMq7Phase.setText("MQ-7 / MQ-2: PRECALENTANDO");
+            tvMq7Seconds.setText(data.getSegundosFase() + " / 45 s");
+            progressMq7Bar.setMax(45);
+            progressMq7Bar.setProgress(data.getSegundosFase());
+        } else {
+            int segMax = esPurga ? 60 : 90;
+            tvMq7Phase.setText(esPurga ? "MQ-7: FASE PURGA (5.0V)" : "MQ-7: FASE MEDICIÓN (1.4V)");
+            tvMq7Seconds.setText(data.getSegundosFase() + " / " + segMax + " s");
+            progressMq7Bar.setMax(segMax);
+            progressMq7Bar.setProgress(data.getSegundosFase());
+        }
     }
 
     private void refreshChart() {
@@ -643,12 +729,18 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
     // PERMISOS DINÁMICOS
     // =========================================================================
     private boolean hasRequiredPermissions() {
+        boolean ok;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            return checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
+            ok = checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_GRANTED
                     && checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN) == PackageManager.PERMISSION_GRANTED;
         } else {
-            return checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+            ok = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ok = ok && (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED);
+        }
+        return ok;
     }
 
     private void requestPermissions() {
@@ -660,6 +752,9 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
             list.add(Manifest.permission.BLUETOOTH);
             list.add(Manifest.permission.BLUETOOTH_ADMIN);
             list.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            list.add(Manifest.permission.POST_NOTIFICATIONS);
         }
         requestPermissions(list.toArray(new String[0]), PERMISSION_REQUEST_CODE);
     }
@@ -676,10 +771,10 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
                 }
             }
             if (allGranted) {
-                Toast.makeText(this, "Permisos de Bluetooth concedidos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Permisos concedidos", Toast.LENGTH_SHORT).show();
                 attemptAutoDetectDevice();
             } else {
-                Toast.makeText(this, "Se requieren permisos de Bluetooth", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Se requieren permisos para monitoreo completo", Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -687,8 +782,8 @@ public class MainActivity extends Activity implements BluetoothManager.Bluetooth
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (btManager != null) {
-            btManager.disconnect();
-        }
+        TelemetryService.setCallback(null);
+        // NOTA: No desconectamos aquí para que el Foreground Service
+        // mantenga la persistencia SQLite activa con la app cerrada.
     }
 }

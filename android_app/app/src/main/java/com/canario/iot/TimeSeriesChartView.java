@@ -187,23 +187,23 @@ public class TimeSeriesChartView extends View {
             return;
         }
 
-        // Determinar límites de escala según el modo
+        // Determinar límites de escala según el modo (Alineado a NOM-010-STPS / NOM-002-STPS)
         float minY = 0.0f;
         float maxY = 150.0f;
-        float thresholdYellow = 35.0f;
+        float thresholdYellow = 25.0f;
         float thresholdRed = 100.0f;
 
         if (currentMode == MODE_CO) {
             maxY = 150.0f;
-            thresholdYellow = 35.0f;
-            thresholdRed = 100.0f;
+            thresholdYellow = 25.0f;  // NOM-010-STPS-2014 VLE-PPT
+            thresholdRed = 100.0f;     // Criterio CENAPRED / Protección Civil
             for (TelemetryData d : dataPoints) {
                 if (d.getCo() > maxY) maxY = d.getCo() * 1.15f;
             }
         } else if (currentMode == MODE_LPG) {
-            maxY = 1500.0f;
-            thresholdYellow = 400.0f;
-            thresholdRed = 1000.0f;
+            maxY = 3500.0f;
+            thresholdYellow = 1000.0f; // NOM-010-STPS-2014 VLE-CT Butano
+            thresholdRed = 3200.0f;    // 20% LEL NOM-002-STPS / NOM-033-STPS
             for (TelemetryData d : dataPoints) {
                 if (d.getLpg() > maxY) maxY = d.getLpg() * 1.15f;
             }

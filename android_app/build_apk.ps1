@@ -43,6 +43,10 @@ Write-Host "[2/6] Enlazando recursos y generando R.java..." -ForegroundColor Gre
 & $Aapt2 link -o "$BuildDir\app-base.apk" `
     -I $AndroidJar `
     --manifest "$ProjectRoot\app\src\main\AndroidManifest.xml" `
+    --min-sdk-version 26 `
+    --target-sdk-version 34 `
+    --version-code 1 `
+    --version-name "1.0" `
     --java $GenDir `
     --auto-add-overlay `
     "$ResCompiled\res.zip"

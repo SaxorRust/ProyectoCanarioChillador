@@ -162,12 +162,68 @@ public class TelemetryDbHelper extends SQLiteOpenHelper {
         db.delete(TABLE_READINGS, null, null);
     }
 
+    public static void copyFile(File src, File dst) throws IOException {
+        try (java.io.InputStream in = new java.io.FileInputStream(src);
+             java.io.OutputStream out = new java.io.FileOutputStream(dst)) {
+            byte[] buf = new byte[4096];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+        }
+    }
+
+    /**
+     * Guarda una copia directa del archivo en la carpeta pública Descargas (Downloads)
+     * utilizando MediaStore en Android 10+ (API 29+) o FileOutputStream en Android 8/9.
+     */
+    public static boolean saveToPublicDownloads(Context context, String fileName, String mimeType, File sourceFile) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            try {
+                android.content.ContentValues values = new android.content.ContentValues();
+                values.put(android.provider.MediaStore.MediaColumns.DISPLAY_NAME, fileName);
+                values.put(android.provider.MediaStore.MediaColumns.MIME_TYPE, mimeType);
+                values.put(android.provider.MediaStore.MediaColumns.RELATIVE_PATH, android.os.Environment.DIRECTORY_DOWNLOADS);
+                android.net.Uri uri = context.getContentResolver().insert(android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI, values);
+                if (uri != null) {
+                    try (java.io.InputStream in = new java.io.FileInputStream(sourceFile);
+                         java.io.OutputStream out = context.getContentResolver().openOutputStream(uri)) {
+                        if (out != null) {
+                            byte[] buf = new byte[4096];
+                            int len;
+                            while ((len = in.read(buf)) > 0) {
+                                out.write(buf, 0, len);
+                            }
+                            out.flush();
+                            return true;
+                        }
+                    }
+                }
+            } catch (Exception ignored) {
+            }
+        }
+
+        // Fallback para Android 8 o 9 (API < 29)
+        try {
+            File downloadsDir = android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS);
+            if (downloadsDir != null) {
+                if (!downloadsDir.exists()) downloadsDir.mkdirs();
+                File dest = new File(downloadsDir, fileName);
+                copyFile(sourceFile, dest);
+                return true;
+            }
+        } catch (Exception ignored) {
+        }
+        return false;
+    }
+
     /**
      * Exporta las lecturas históricas a un archivo CSV estructurado para auditoría.
      */
     public synchronized File exportToCsv(Context context) throws IOException {
         File dir = context.getExternalFilesDir(null);
         if (dir == null) dir = context.getFilesDir();
+        if (!dir.exists()) dir.mkdirs();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
         String fileName = "canario_audit_" + sdf.format(new Date()) + ".csv";
@@ -205,6 +261,7 @@ public class TelemetryDbHelper extends SQLiteOpenHelper {
     public synchronized File exportToJson(Context context) throws IOException {
         File dir = context.getExternalFilesDir(null);
         if (dir == null) dir = context.getFilesDir();
+        if (!dir.exists()) dir.mkdirs();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US);
         String fileName = "canario_audit_" + sdf.format(new Date()) + ".json";

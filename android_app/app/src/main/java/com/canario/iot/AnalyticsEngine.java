@@ -11,12 +11,13 @@ import java.util.Locale;
  */
 public class AnalyticsEngine {
 
-    // Umbrales Normativos Oficiales
-    public static final float NOM_010_VLE_PPT_CO = 25.0f;  // Límite Máximo Permisible Ponderado en 8h (México)
-    public static final float OSHA_PEL_TWA_CO    = 50.0f;  // Permissible Exposure Limit (EE. UU.)
-    public static final float UL_2034_MIN_ALARM  = 30.0f;  // Umbral mínimo para evitar falsos positivos
-    public static final float NFPA_LEL_PREV_LPG  = 400.0f; // Advertencia preventiva (10% de LEL)
-    public static final float NFPA_LEL_EVAC_LPG  = 1000.0f;// Alarma crítica de evacuación
+    // Umbrales Normativos Oficiales (México: STPS / SSA / CENAPRED)
+    public static final float NOM_010_VLE_PPT_CO   = 25.0f;   // Límite Máximo Permisible Ponderado en 8h (NOM-010-STPS-2014)
+    public static final float CENAPRED_PELIGRO_CO  = 100.0f;  // Criterio de intoxicación aguda y evacuación (CENAPRED)
+    public static final float OSHA_PEL_TWA_CO      = 50.0f;   // Permissible Exposure Limit (EE. UU.)
+    public static final float UL_2034_MIN_ALARM    = 30.0f;   // Umbral mínimo para evitar falsos positivos
+    public static final float NOM_010_VLE_CT_LPG   = 1000.0f; // Fuga incipiente / Corto Tiempo (NOM-010-STPS-2014)
+    public static final float NOM_002_LEL_EVAC_LPG = 3200.0f; // 20% LEL Alarma crítica de evacuación (NOM-002-STPS / NOM-033-STPS)
 
     public static class AnalyticsReport {
         public float twaCO = 0.0f;
@@ -211,9 +212,9 @@ public class AnalyticsEngine {
         float co = (current != null) ? current.getCo() : report.avgCo;
         float lpg = (current != null) ? current.getLpg() : report.avgLpg;
 
-        if (co >= 100.0f || lpg >= NFPA_LEL_EVAC_LPG) {
-            sb.append("CONDICIÓN CRÍTICA DE EMERGENCIA: Concentración en nivel letal o explosivo. ");
-            sa.append("EVACUAR INMEDIATAMENTE. No accionar interruptores eléctricos. Ventilar el área.");
+        if (co >= CENAPRED_PELIGRO_CO || lpg >= NOM_002_LEL_EVAC_LPG) {
+            sb.append("CONDICIÓN CRÍTICA DE EMERGENCIA: Concentración en nivel peligroso o explosivo (≥20% LEL). ");
+            sa.append("EVACUAR INMEDIATAMENTE. No accionar interruptores eléctricos ni producir chispas. Ventilar el área.");
         } else if (fugaAceleradaCO || fugaAceleradaLPG) {
             sb.append("PRE-ALARMA PREDICTIVA: La tasa de cambio (dPPM/dt = ")
               .append(String.format(Locale.US, "+%.2f PPM/s", report.dCoDt))
@@ -224,17 +225,44 @@ public class AnalyticsEngine {
               .append(String.format(Locale.US, "%.1f PPM", report.twaCO))
               .append(") rebasa la norma NOM-010-STPS (Límite 25 PPM). ");
             sa.append("El personal no debe permanecer en el recinto sin ventilación forzada.");
-        } else if (co >= 35.0f || lpg >= NFPA_LEL_PREV_LPG) {
-            sb.append("PRECAUCIÓN AMBIENTAL: Elevación de gases en rango de atención preventiva. ");
-            sa.append("Inspeccionar el sistema de combustión y permitir circulación de aire natural.");
+        } else if (co >= NOM_010_VLE_PPT_CO || lpg >= NOM_010_VLE_CT_LPG) {
+            sb.append("PRECAUCIÓN AMBIENTAL: Elevación de gases en rango preventivo normado (NOM-010-STPS). ");
+            sa.append("Inspeccionar el sistema de combustión/llaves de paso y permitir circulación de aire natural.");
         } else {
             sb.append("ATMÓSFERA NOMINAL: Niveles dentro de los estándares de higiene ocupacional inocua. ");
             sa.append("Operación regular. No se requieren acciones mitigadoras.");
         }
 
-        // Si el MQ-7 está en purga
-        if (current != null && "PURGA".equalsIgnoreCase(current.getFaseMQ7())) {
-            sb.append("\n[Nota Silicio]: MQ-7 en calentamiento térmico (5.0V); mediciones en período de desorción.");
+        // Diagnóstico Físico-Químico del MQ-7 (Acondicionamiento de Silicio y Ciclo Térmico)
+        if (current != null) {
+            if (current.isPrecalentando()) {
+                int segRestantes = Math.max(0, 45 - current.getSegundosFase());
+                sb.append("\n\n[Nota Silicio - Precalentamiento Inicial]: ")
+                  .append("Acondicionamiento inicial de pastillas semiconductoras de SnO₂. ")
+                  .append("Tiempo restante: ").append(segRestantes).append(" s. ")
+                  .append("Los filamentos térmicos del MQ-2 y MQ-7 se encuentran elevando su temperatura interna hacia el régimen de trabajo (~300 °C). ")
+                  .append("Durante estos primeros 45 segundos se produce la desorción forzada de humedad ambiental y COV acumulados en frío. ")
+                  .append("La línea base física de aire limpio se calibrará automáticamente al completar los 45 segundos.");
+            } else {
+                String fase = current.getFaseMQ7();
+                int seg = current.getSegundosFase();
+                if ("PURGA".equalsIgnoreCase(fase)) {
+                    sb.append("\n\n[Nota Silicio - Ciclo Térmico a 5.0V]: ")
+                      .append("Sensor MQ-7 en fase de purga y desorción térmica (")
+                      .append(seg).append("/60 s). ")
+                      .append("El calefactor opera a 5.0V continuo (PWM Duty 255) para evaporar y limpiar impurezas químicas en la capa de SnO₂. ")
+                      .append("Durante estos 60 segundos la resistencia interna desciende abruptamente por calentamiento extremo, ")
+                      .append("lo que produce picos transitorios de PPM que NO corresponden a una fuga real de gas. ")
+                      .append("La medición cuantitativa válida se consolida únicamente al descender a la fase de 1.4V.");
+                } else if ("MEDICION".equalsIgnoreCase(fase)) {
+                    sb.append("\n\n[Nota Silicio - Sensado Cuantitativo a 1.4V]: ")
+                      .append("Sensor MQ-7 en fase de quimiorresorción catalítica a 1.4V RMS (")
+                      .append(seg).append("/90 s). ")
+                      .append("El calefactor conmuta a modulación PWM (7.84% eficaz), alcanzando la temperatura molecular óptima ")
+                      .append("para la adsorción selectiva de Monóxido de Carbono (CO). ")
+                      .append("Lecturas analógicas estabilizadas en ventana cuantitativa certificada bajo la norma NOM-010-STPS.");
+                }
+            }
         }
 
         report.conclusionGeneral = sb.toString();

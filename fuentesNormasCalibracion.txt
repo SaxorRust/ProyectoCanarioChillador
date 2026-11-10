@@ -1,0 +1,110 @@
+https://www.veracruz.gob.mx/medioambiente/normatividad-calidad-del-aire/
+
+
+En México, la regulación de concentraciones de gases tóxicos y combustibles se divide principalmente en dos ámbitos oficiales: **Salud Ocupacional / Seguridad en el Trabajo** (emitidas por la **STPS**) y **Salud Ambiental / Calidad del Aire** (emitidas por la **Secretaría de Salud / SEMARNAT**), complementadas por directrices de **Protección Civil (CENAPRED)**.
+
+Toda esta normatividad está publicada en el **Diario Oficial de la Federación (DOF)** y en el catálogo del sistema nacional de normas (Secretaría de Economía).
+
+---
+
+### 1. Marco Normativo Oficial Mexicano
+
+#### A. Monóxido de Carbono ($\text{CO}$)
+
+* **NOM-010-STPS-2014** (*Agentes químicos contaminantes del ambiente laboral - Reconocimiento, evaluación y control*):
+* **Sustancia:** Monóxido de carbono (No. CAS: `630-08-0`).
+* **VLE-PPT (Valor Límite de Exposición Promedio Ponderado en Tiempo - jornada de 8 horas):** **$25\text{ ppm}$**. Superar este nivel de manera prolongada se clasifica como exposición de riesgo ocupacional.
+
+
+* **NOM-021-SSA1-2021** (*Salud ambiental. Criterio para evaluar la calidad del aire ambiente con respecto al monóxido de carbono*):
+* Límite normado para aire respirable continuo en entornos poblacionales: **$9.00\text{ ppm}$** (promedio móvil de 8 horas).
+
+
+* **NOM-033-STPS-2015** (*Espacios confinados*):
+* Obliga al monitoreo continuo y cataloga como atmósfera peligrosa inmediata cualquier nivel de tóxico que sobrepase los VLE de la NOM-010 (es decir, $> 25\text{ ppm}$ para CO).
+
+
+
+---
+
+#### B. Gas Butano y Gas LP (Propano / Butano)
+
+En México, el gas de uso doméstico/comercial es **Gas LP** (regulada su composición por la CRE / SENER), compuesto normalmente por una mezcla de propano ($\sim 60\%$) y butano ($\sim 40\%$).
+
+* **NOM-010-STPS-2014** (Criterio toxicológico):
+* **Sustancia:** Butano (todos los isómeros, No. CAS: `106-97-8`).
+* **VLE-CT (Valor Límite de Exposición de Corto Tiempo - 15 minutos):** **$1,000\text{ ppm}$**.
+
+
+* **NOM-033-STPS-2015**, **NOM-002-STPS-2010** y **NMX-S-069-SCFI-2020** (Criterio de inflamabilidad y explosividad):
+* Las normativas de seguridad contra incendios en México no regulan el gas combustible únicamente por toxicidad, sino por su **Límite Inferior de Explosividad / Inflamabilidad (LEL / LII)**:
+* **LEL del n-Butano:** $\approx 1.6\% \text{ a } 1.8\%$ en volumen en aire ($16,000 \text{ a } 18,000\text{ ppm}$).
+* **LEL del Propano:** $\approx 2.1\%$ en volumen ($21,000\text{ ppm}$).
+
+
+* **Umbrales reglamentarios obligatorios de alerta:**
+* **Pre-alarma (Advertencia):** **$10\%$ del LEL**. Para butano puro equivale a **$1,600 \text{ a } 1,800\text{ ppm}$**.
+* **Alarma Crítica (Evacuación inmediata / paro de emergencia):** **$20\% \text{ a } 25\%$ del LEL**. Para butano equivale a **$3,200 \text{ a } 4,500\text{ ppm}$**.
+
+
+
+
+
+---
+
+### 2. Parámetros Óptimos de Calibración y Alertas para Sensores
+
+Al trasladar la legislación mexicana a las curvas de respuesta del **MQ-7** y **MQ-2**, los umbrales de programación para los diferentes estados del sistema quedan definidos así:
+
+#### Para el MQ-7 (Monóxido de Carbono - CO)
+
+*Rango útil del sensor:* $20\text{ a } 2000\text{ ppm}$.
+
+| Estado | Umbral (ppm) | Referencia Técnica / Normativa Mexicana | Acción del Dispositivo |
+| --- | --- | --- | --- |
+| **Normal (Verde)** | $< 9\text{ - }25\text{ ppm}$ | NOM-021-SSA1 (calidad ambiental) y NOM-010-STPS (VLE-PPT 8h). | Aire limpio/seguro. Sin acción sonora. |
+| **Pre-alerta (Amarillo)** | $26\text{ - }50\text{ ppm}$ | Excede exposición laboral continua admisible. Exposición tolerable solo por lapsos breves. | Aviso visual, recomendación de ventilación natural. |
+| **Alarma Alta (Naranja)** | $51\text{ - }100\text{ ppm}$ | Umbral de cefaleas y fatiga tras 1 a 2 horas (criterio CENAPRED/Protección Civil). | Beep intermitente, activar ventilación forzada. |
+| **Crítico / Evacuación (Rojo)** | $> 150\text{ - }200\text{ ppm}$ | Peligro inminente para la vida y la salud en exposición mediana (IDLH / criterios NFPA/Protección Civil). | Sirena continua, alerta de evacuación total inmediata. |
+
+---
+
+#### Para el MQ-2 (Gas LP / Butano)
+
+*Rango útil del sensor:* $300\text{ a } 10,000\text{ ppm}$ (con alta sensibilidad al GLP/propano/butano a partir de $300\text{ ppm}$).
+
+| Estado | Umbral (ppm) | Referencia Técnica / Normativa Mexicana | Acción del Dispositivo |
+| --- | --- | --- | --- |
+| **Limpio (Verde)** | $< 400\text{ - }500\text{ ppm}$ | Concentración basal ambiental / ruido electrónico normal del sensor. | Operación normal. |
+| **Fuga Incipiente (Amarillo)** | $800\text{ - }1,000\text{ ppm}$ | Límite de exposición de corto tiempo VLE-CT NOM-010-STPS ($1,000\text{ ppm}$ butano / $\approx 5\%\text{ LEL}$). | Detección temprana de fuga lenta o llave mal cerrada. |
+| **Pre-alarma Explosiva (Naranja)** | $1,600\text{ - }1,800\text{ ppm}$ | **$10\%\text{ del LEL}$** reglamentario (NOM-033-STPS / NOM-002-STPS). | Alarma sonora moderada, advertir no encender luces/chispas. |
+| **Peligro Crítico (Rojo)** | $> 3,200\text{ - }3,600\text{ ppm}$ | **$20\%\text{ del LEL}$** reglamentario de gas combustible en aire. | Alarma continua, corte automático por solenoide, evacuar. |
+
+---
+
+### 3. Consideraciones de Firmware para MQ-2 y MQ-7
+
+1. **Ciclo térmico obligatorio del MQ-7:**
+* El MQ-7 no puede leer CO de manera precisa con alimentación constante a $5\text{V}$. Requiere alternancia controlada por hardware (transistor/MOSFET o pin PWM):
+* **Fase de purga:** $5.0\text{V}$ durante $60\text{ segundos}$ (se limpian los residuos químicos del elemento sensor).
+* **Fase de sensado:** $1.4\text{V}$ durante $90\text{ segundos}$ (único lapso donde el valor ADC se muestrea y se convierte a PPM).
+
+
+
+
+2. **Sensibilidad cruzada del MQ-2:**
+* El MQ-2 responde también a alcohol etílico y humo denso. Establecer el umbral de alerta de fuga en $1,000\text{ ppm}$ ($\approx 5\%\text{ LEL}$) evita que vapores de desinfectantes o productos de limpieza generen falsos disparos de incendio.
+
+
+3. **Cálculo de $R_0$:**
+* Las lecturas de PPM en estos sensores dependen de la relación $R_s / R_0$, donde $R_0$ es la resistencia del sensor en aire limpio. Para que los umbrales de las NOM tengan correlación física real, se debe programar una rutina de precalentamiento (mínimo 24 a 48 horas en el primer encendido) y calibrar el valor basal de $R_0$ en un entorno libre de contaminantes.
+
+
+
+---
+
+### Fuentes Oficiales de Consulta Directa
+
+* **Diario Oficial de la Federación (DOF):** `dof.gob.mx` (búsqueda de *NOM-010-STPS-2014*, *NOM-033-STPS-2015*, *NOM-021-SSA1-2021*).
+* **Secretaría del Trabajo y Previsión Social (STPS):** Catálogo de Normas Oficiales Mexicanas de Seguridad y Salud en el Trabajo.
+* **CENAPRED / Sistema Nacional de Protección Civil:** Guías de prevención de intoxicación por monóxido de carbono e incendios por gas LP.

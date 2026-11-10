@@ -22,3 +22,10 @@ build/
 Thumbs.db
 *.log
 *.tmp
+
+# Python & Desktop app temporary files
+__pycache__/
+*.pyc
+desktop_app/tcl_data/
+desktop_app/tk_data/
+*.db
