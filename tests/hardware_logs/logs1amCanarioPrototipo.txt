@@ -1,0 +1,135 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x17 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4876
+ho 0 tail 12 room 4
+load:0x40078000,len:16532
+load:0x40080400,len:3500
+entry 0x400805b4
+
+==============================================
+ CANARIO CHILLADOR - NODO IOT STANDALONE 
+ Modo 100% Autonomo / Cero Dependencia de Red 
+==============================================
+[BT] Bluetooth Classic SPP iniciado: 'Canario_Chillador_IoT'
+[TEST RGB] Probando canales: ROJO(G23) -> VERDE(G19) -> AZUL(G18) -> AMARILLO(R+G)
+[DIAG OLED] Contacto pull-up 3.3V -> G21(SDA)=OK | G22(SCL)=OK
+[I2C OK] Pantalla OLED activa en 0x3C (SDA=G21, SCL=G22)
+{"co":55.3,"lpg":1418.6,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":0,"alerta":"PELIGRO","mute":false}
+{"co":55.1,"lpg":1425.0,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":1,"alerta":"PELIGRO","mute":false}
+{"co":57.1,"lpg":1436.7,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":2,"alerta":"PELIGRO","mute":false}
+{"co":56.8,"lpg":1411.2,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":3,"alerta":"PELIGRO","mute":false}
+{"co":57.8,"lpg":1408.1,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":4,"alerta":"PELIGRO","mute":false}
+{"co":58.7,"lpg":1426.0,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":5,"alerta":"PELIGRO","mute":false}
+{"co":58.8,"lpg":1421.8,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":6,"alerta":"PELIGRO","mute":false}
+{"co":58.9,"lpg":1393.3,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":7,"alerta":"PELIGRO","mute":false}
+{"co":58.3,"lpg":1411.2,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":8,"alerta":"PELIGRO","mute":false}
+{"co":57.4,"lpg":1421.8,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":9,"alerta":"PELIGRO","mute":false}
+{"co":57.0,"lpg":1429.2,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":10,"alerta":"PELIGRO","mute":false}
+{"co":57.8,"lpg":1393.3,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":11,"alerta":"PELIGRO","mute":false}
+{"co":57.9,"lpg":1412.3,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":12,"alerta":"PELIGRO","mute":false}
+{"co":57.0,"lpg":1394.4,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":13,"alerta":"PELIGRO","mute":false}
+{"co":56.4,"lpg":1350.7,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":14,"alerta":"PELIGRO","mute":false}
+{"co":56.2,"lpg":1375.6,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":15,"alerta":"PELIGRO","mute":false}
+{"co":58.7,"lpg":1401.7,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":16,"alerta":"PELIGRO","mute":false}
+{"co":58.9,"lpg":1392.3,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":17,"alerta":"PELIGRO","mute":false}
+{"co":59.1,"lpg":1394.4,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":18,"alerta":"PELIGRO","mute":false}
+{"co":59.6,"lpg":1394.4,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":19,"alerta":"PELIGRO","mute":false}
+{"co":60.0,"lpg":1396.5,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":20,"alerta":"PELIGRO","mute":false}
+{"co":59.2,"lpg":1413.3,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":21,"alerta":"PELIGRO","mute":false}
+{"co":58.9,"lpg":1419.7,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":22,"alerta":"PELIGRO","mute":false}
+{"co":59.3,"lpg":1423.9,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":23,"alerta":"PELIGRO","mute":false}
+{"co":58.7,"lpg":1414.4,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":24,"alerta":"PELIGRO","mute":false}
+{"co":57.1,"lpg":1277.4,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":25,"alerta":"PELIGRO","mute":false}
+{"co":56.0,"lpg":1091.1,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":26,"alerta":"PELIGRO","mute":false}
+{"co":52.2,"lpg":966.9,"temp":24.5,"hum":49.0,"fase":"PURGA","seg":27,"alerta":"PRECAUCION","mute":false}
+{"co":50.2,"lpg":849.3,"temp":24.5,"hum":51.0,"fase":"PURGA","seg":28,"alerta":"PRECAUCION","mute":false}
+{"co":49.6,"lpg":816.8,"temp":24.5,"hum":51.0,"fase":"PURGA","seg":29,"alerta":"PRECAUCION","mute":false}
+{"co":55.2,"lpg":852.6,"temp":24.5,"hum":55.0,"fase":"PURGA","seg":30,"alerta":"PRECAUCION","mute":false}
+{"co":61.7,"lpg":1272.9,"temp":24.5,"hum":55.0,"fase":"PURGA","seg":31,"alerta":"PELIGRO","mute":false}
+{"co":67.0,"lpg":1334.1,"temp":25.3,"hum":78.0,"fase":"PURGA","seg":32,"alerta":"PELIGRO","mute":false}
+{"co":74.2,"lpg":1368.7,"temp":25.3,"hum":78.0,"fase":"PURGA","seg":33,"alerta":"PELIGRO","mute":false}
+{"co":75.6,"lpg":1333.7,"temp":27.1,"hum":98.0,"fase":"PURGA","seg":34,"alerta":"PELIGRO","mute":false}
+{"co":77.0,"lpg":1368.8,"temp":27.1,"hum":98.0,"fase":"PURGA","seg":35,"alerta":"PELIGRO","mute":false}
+{"co":76.0,"lpg":1400.4,"temp":29.5,"hum":98.0,"fase":"PURGA","seg":36,"alerta":"PELIGRO","mute":false}
+{"co":74.0,"lpg":1403.9,"temp":29.5,"hum":98.0,"fase":"PURGA","seg":37,"alerta":"PELIGRO","mute":false}
+{"co":73.2,"lpg":1968.3,"temp":30.8,"hum":98.0,"fase":"PURGA","seg":38,"alerta":"PELIGRO","mute":false}
+{"co":73.5,"lpg":3383.9,"temp":30.8,"hum":98.0,"fase":"PURGA","seg":39,"alerta":"PELIGRO","mute":false}
+{"co":74.2,"lpg":3527.1,"temp":30.2,"hum":98.0,"fase":"PURGA","seg":40,"alerta":"PELIGRO","mute":false}
+{"co":77.5,"lpg":3537.9,"temp":30.2,"hum":98.0,"fase":"PURGA","seg":41,"alerta":"PELIGRO","mute":false}
+{"co":76.7,"lpg":3537.9,"temp":29.8,"hum":98.0,"fase":"PURGA","seg":42,"alerta":"PELIGRO","mute":false}
+{"co":75.4,"lpg":3545.1,"temp":29.8,"hum":98.0,"fase":"PURGA","seg":43,"alerta":"PELIGRO","mute":false}
+{"co":75.4,"lpg":3545.1,"temp":29.3,"hum":98.0,"fase":"PURGA","seg":44,"alerta":"PELIGRO","mute":false}
+{"co":74.0,"lpg":3554.1,"temp":29.3,"hum":98.0,"fase":"PURGA","seg":45,"alerta":"PELIGRO","mute":false}
+{"co":74.6,"lpg":3554.1,"temp":29.2,"hum":98.0,"fase":"PURGA","seg":46,"alerta":"PELIGRO","mute":false}
+{"co":75.4,"lpg":3555.9,"temp":29.2,"hum":98.0,"fase":"PURGA","seg":47,"alerta":"PELIGRO","mute":false}
+{"co":76.7,"lpg":3555.9,"temp":28.9,"hum":98.0,"fase":"PURGA","seg":48,"alerta":"PELIGRO","mute":false}
+{"co":79.0,"lpg":3561.4,"temp":28.9,"hum":98.0,"fase":"PURGA","seg":49,"alerta":"PELIGRO","mute":false}
+{"co":78.1,"lpg":3561.4,"temp":28.5,"hum":98.0,"fase":"PURGA","seg":50,"alerta":"PELIGRO","mute":false}
+{"co":86.2,"lpg":3568.7,"temp":28.5,"hum":98.0,"fase":"PURGA","seg":51,"alerta":"PELIGRO","mute":false}
+{"co":99.6,"lpg":3568.7,"temp":28.5,"hum":98.0,"fase":"PURGA","seg":52,"alerta":"PELIGRO","mute":false}
+{"co":101.3,"lpg":3568.7,"temp":28.5,"hum":98.0,"fase":"PURGA","seg":53,"alerta":"PELIGRO","mute":false}
+{"co":100.7,"lpg":3568.7,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":54,"alerta":"PELIGRO","mute":false}
+{"co":98.2,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":55,"alerta":"PELIGRO","mute":false}
+{"co":95.9,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":56,"alerta":"PELIGRO","mute":false}
+{"co":96.9,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":57,"alerta":"PELIGRO","mute":false}
+{"co":96.6,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":58,"alerta":"PELIGRO","mute":false}
+{"co":96.3,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"PURGA","seg":59,"alerta":"PELIGRO","mute":false}
+{"co":98.4,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":0,"alerta":"PELIGRO","mute":false}
+{"co":99.0,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":1,"alerta":"PELIGRO","mute":false}
+{"co":98.4,"lpg":3577.8,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":2,"alerta":"PELIGRO","mute":false}
+{"co":95.9,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":3,"alerta":"PELIGRO","mute":false}
+{"co":96.1,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":4,"alerta":"PELIGRO","mute":false}
+{"co":97.8,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":5,"alerta":"PELIGRO","mute":false}
+{"co":96.7,"lpg":3585.2,"temp":27.7,"hum":98.0,"fase":"MEDICION","seg":6,"alerta":"PELIGRO","mute":false}
+{"co":96.8,"lpg":3583.3,"temp":27.7,"hum":98.0,"fase":"MEDICION","seg":7,"alerta":"PELIGRO","mute":false}
+{"co":95.2,"lpg":3583.3,"temp":27.9,"hum":98.0,"fase":"MEDICION","seg":8,"alerta":"PELIGRO","mute":false}
+{"co":94.2,"lpg":3579.7,"temp":27.9,"hum":98.0,"fase":"MEDICION","seg":9,"alerta":"PELIGRO","mute":false}
+{"co":96.1,"lpg":3579.7,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":10,"alerta":"PELIGRO","mute":false}
+{"co":93.9,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":11,"alerta":"PELIGRO","mute":false}
+{"co":93.0,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":12,"alerta":"PELIGRO","mute":false}
+{"co":94.7,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":13,"alerta":"PELIGRO","mute":false}
+{"co":93.6,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":14,"alerta":"PELIGRO","mute":false}
+{"co":92.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":15,"alerta":"PELIGRO","mute":false}
+{"co":120.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":16,"alerta":"PELIGRO","mute":false}
+{"co":148.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":17,"alerta":"PELIGRO","mute":false}
+{"co":138.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":18,"alerta":"PELIGRO","mute":false}
+{"co":195.6,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":19,"alerta":"PELIGRO","mute":false}
+{"co":172.6,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":20,"alerta":"PELIGRO","mute":false}
+{"co":130.0,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":21,"alerta":"PELIGRO","mute":false}
+{"co":114.4,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":22,"alerta":"PELIGRO","mute":false}
+{"co":105.2,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":23,"alerta":"PELIGRO","mute":false}
+{"co":102.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":24,"alerta":"PELIGRO","mute":false}
+{"co":99.1,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":25,"alerta":"PELIGRO","mute":false}
+{"co":97.3,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":26,"alerta":"PELIGRO","mute":false}
+{"co":95.3,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":27,"alerta":"PELIGRO","mute":false}
+{"co":96.5,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":28,"alerta":"PELIGRO","mute":false}
+{"co":95.0,"lpg":3577.8,"temp":28.0,"hum":98.0,"fase":"MEDICION","seg":29,"alerta":"PELIGRO","mute":false}
+{"co":92.8,"lpg":3577.8,"temp":27.9,"hum":98.0,"fase":"MEDICION","seg":30,"alerta":"PELIGRO","mute":false}
+{"co":93.3,"lpg":3579.7,"temp":27.9,"hum":98.0,"fase":"MEDICION","seg":31,"alerta":"PELIGRO","mute":false}
+{"co":91.2,"lpg":3579.7,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":32,"alerta":"PELIGRO","mute":false}
+{"co":91.0,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":33,"alerta":"PELIGRO","mute":false}
+{"co":89.8,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":34,"alerta":"PELIGRO","mute":false}
+{"co":89.8,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":35,"alerta":"PELIGRO","mute":false}
+{"co":88.6,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":36,"alerta":"PELIGRO","mute":false}
+{"co":88.4,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":37,"alerta":"PELIGRO","mute":false}
+{"co":87.3,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":38,"alerta":"PELIGRO","mute":false}
+{"co":87.3,"lpg":3585.2,"temp":27.6,"hum":98.0,"fase":"MEDICION","seg":39,"alerta":"PELIGRO","mute":false}
+{"co":88.6,"lpg":3585.2,"temp":27.6,"hum":97.0,"fase":"MEDICION","seg":40,"alerta":"PELIGRO","mute":false}
+{"co":85.8,"lpg":3577.8,"temp":27.6,"hum":97.0,"fase":"MEDICION","seg":41,"alerta":"PELIGRO","mute":false}
+{"co":85.8,"lpg":3577.8,"temp":27.1,"hum":96.0,"fase":"MEDICION","seg":42,"alerta":"PELIGRO","mute":false}
+{"co":86.3,"lpg":3579.7,"temp":27.1,"hum":96.0,"fase":"MEDICION","seg":43,"alerta":"PELIGRO","mute":false}
+{"co":85.5,"lpg":3579.7,"temp":27.1,"hum":95.0,"fase":"MEDICION","seg":44,"alerta":"PELIGRO","mute":false}
+{"co":86.8,"lpg":3572.3,"temp":27.1,"hum":95.0,"fase":"MEDICION","seg":45,"alerta":"PELIGRO","mute":false}
+{"co":85.8,"lpg":3572.3,"temp":27.1,"hum":94.0,"fase":"MEDICION","seg":46,"alerta":"PELIGRO","mute":false}
+{"co":71.8,"lpg":1358.6,"temp":27.1,"hum":94.0,"fase":"MEDICION","seg":47,"alerta":"PELIGRO","mute":false}
+{"co":50.6,"lpg":489.2,"temp":27.1,"hum":93.0,"fase":"MEDICION","seg":48,"alerta":"PRECAUCION","mute":false}
+{"co":49.4,"lpg":629.1,"temp":27.1,"hum":93.0,"fase":"MEDICION","seg":49,"alerta":"PRECAUCION","mute":false}
+{"co":49.2,"lpg":713.6,"temp":27.1,"hum":90.0,"fase":"MEDICION","seg":50,"alerta":"PRECAUCION","mute":false}
+{"co":49.9,"lpg":796.1,"temp":27.1,"hum":90.0,"fase":"MEDICION","seg":51,"alerta":"PRECAUCION","mute":false}
+{"co":49.7,"lpg":884.5,"temp":26.9,"hum":89.0,"fase":"MEDICION","seg":52,"alerta":"PRECAUCION","mute":false}
+{"co":49.7,"lpg":947.7,"temp":26.9,"hum":89.0,"fase":"MEDICION","seg":53,"alerta":"PRECAUCION","mute":false}
+

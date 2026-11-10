@@ -1,0 +1,726 @@
+[TEST BUZZER] Pulso unico 150ms en GPIO 27 -> luego queda en SILENCIO (0.0V)
+[DIAG BOTON] GPIO 13 estado inicial: PULSADO A TIERRA (LOW) -> Revisa si el boton esta pegado o corto a GND
+[DIAG OLED] Contacto pull-up 3.3V -> G21(SDA)=OK | G22(SCL)=OK
+[I2C OK] Pantalla OLED activa en 0x3C (SDA=G21, SCL=G22)
+[SENSORES] Inicio -> MQ-2(G34): 0.00V (Base limpia: 0.25V) | MQ-7(G35): 0.00V (Base limpia: 1.30V)
+[COMANDOS] Escribe VOLTS, CALIB (solo en aire limpio) o INVERTIR_BUZZER en el Monitor Serial.
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":51.0,"fase":"PURGA","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":54.0,"fase":"PURGA","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":54.0,"fase":"PURGA","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":53.0,"fase":"PURGA","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":52.0,"fase":"PURGA","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":52.0,"fase":"PURGA","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":51.0,"fase":"PURGA","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":51.0,"fase":"PURGA","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.6,"hum":50.0,"fase":"PURGA","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.6,"hum":50.0,"fase":"PURGA","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"PURGA","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"PURGA","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"PURGA","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"PURGA","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"PURGA","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"PURGA","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":53.0,"fase":"MEDICION","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":53.0,"fase":"MEDICION","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":53.0,"fase":"MEDICION","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":53.0,"fase":"MEDICION","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":52.0,"fase":"MEDICION","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":52.0,"fase":"MEDICION","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":40,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":41,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":60,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":61,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":62,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":63,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":64,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":65,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":66,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":67,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":47.0,"fase":"MEDICION","seg":68,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":47.0,"fase":"MEDICION","seg":69,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":48.0,"fase":"MEDICION","seg":70,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":48.0,"fase":"MEDICION","seg":71,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":49.0,"fase":"MEDICION","seg":72,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":49.0,"fase":"MEDICION","seg":73,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":74,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":75,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":76,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":77,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":78,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":79,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":80,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":81,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":82,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":83,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":84,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":85,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":86,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":87,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":88,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"MEDICION","seg":89,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":50.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":20,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":21,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":22,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":25,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":29,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":30,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":31,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":32,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":46.0,"fase":"PURGA","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"PURGA","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":48,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":49,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":50,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"PURGA","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":48.0,"fase":"PURGA","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":49.0,"fase":"MEDICION","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":49.0,"fase":"MEDICION","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":49.0,"fase":"MEDICION","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.4,"hum":50.0,"fase":"MEDICION","seg":4,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.4,"hum":50.0,"fase":"MEDICION","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":51.0,"fase":"MEDICION","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":50.0,"fase":"MEDICION","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":48.0,"fase":"MEDICION","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":48.0,"fase":"MEDICION","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":47.0,"fase":"MEDICION","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.3,"hum":47.0,"fase":"MEDICION","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":29,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":38,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":39,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":40,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":41,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":42,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":43,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":44,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":45,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":46,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":47,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":48,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":47.0,"fase":"MEDICION","seg":49,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.4,"hum":48.0,"fase":"MEDICION","seg":50,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.4,"hum":48.0,"fase":"MEDICION","seg":51,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":48.0,"fase":"MEDICION","seg":52,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.5,"hum":48.0,"fase":"MEDICION","seg":53,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":54,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":55,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":56,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":57,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":58,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":59,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":60,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":61,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":62,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":63,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":64,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":65,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":66,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":67,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":68,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":69,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":70,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":49.0,"fase":"MEDICION","seg":71,"alerta":"NORMAL","mute":true}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":72,"alerta":"NORMAL","mute":true}
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+[HMI] Pulsador (toque corto) -> MUTE ACTIVADO (Silencio 60s)
+[HMI] Pulsador (toque corto) -> MUTE DESACTIVADO (Audio activo)
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":73,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":74,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":75,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":76,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":77,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":78,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":79,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":80,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":81,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":82,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":83,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":84,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":85,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":86,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":87,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":88,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":89,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":false}
+[DHT WARN] Sin lectura del DHT11 en GPIO 4 (revisa VCC, GND y pin DATA).
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":false}
+[BT] Bluetooth Classic SPP iniciado: 'Canario_Chillador_IoT'
+[TEST RGB] Probando canales: ROJO(G23) -> VERDE(G19) -> AZUL(G18) -> AMARILLO(R+G)
+[TEST BUZZER] Pulso unico 150ms en GPIO 27 -> luego queda en SILENCIO (0.0V)
+[DIAG BOTON] GPIO 13 estado inicial: PULSADO A TIERRA (LOW) -> Revisa si el boton esta pegado o corto a GND
+[DIAG OLED] Contacto pull-up 3.3V -> G21(SDA)=OK | G22(SCL)=OK
+[I2C OK] Pantalla OLED activa en 0x3C (SDA=G21, SCL=G22)
+[SENSORES] Inicio -> MQ-2(G34): 0.00V (Base limpia: 0.25V) | MQ-7(G35): 0.00V (Base limpia: 1.30V)
+[COMANDOS] Escribe VOLTS, CALIB (solo en aire limpio) o INVERTIR_BUZZER en el Monitor Serial.
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"PURGA","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"PURGA","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":23,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 1
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":33,"alerta":"NORMAL","mute":false}
+[HMI] Pulsador (1s sostenido) -> Vista OLED cambiada a: 0
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":48.0,"fase":"MEDICION","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":47.0,"fase":"MEDICION","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":46.0,"fase":"MEDICION","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":60,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":61,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":62,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":63,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":64,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":45.0,"fase":"MEDICION","seg":65,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":66,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":67,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":68,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":69,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":70,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":71,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":72,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.7,"hum":44.0,"fase":"MEDICION","seg":73,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.6,"hum":44.0,"fase":"MEDICION","seg":74,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.6,"hum":44.0,"fase":"MEDICION","seg":75,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":76,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":77,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":78,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":79,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":80,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":81,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":82,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":83,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":84,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":44.0,"fase":"MEDICION","seg":85,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"MEDICION","seg":86,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"MEDICION","seg":87,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"MEDICION","seg":88,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"MEDICION","seg":89,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.2,"hum":43.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.1,"hum":43.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":26.1,"hum":43.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":43.0,"fase":"PURGA","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.8,"hum":44.0,"fase":"PURGA","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.4,"hum":44.0,"fase":"PURGA","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.4,"hum":44.0,"fase":"PURGA","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.3,"hum":44.0,"fase":"PURGA","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.0,"hum":44.0,"fase":"PURGA","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":25.0,"hum":44.0,"fase":"PURGA","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"PURGA","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"PURGA","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.8,"hum":44.0,"fase":"MEDICION","seg":21,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":22,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":23,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":24,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":25,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":26,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":27,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":28,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":29,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":30,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":31,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":32,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":33,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":34,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":35,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":36,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":37,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":38,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":39,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":40,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":41,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":42,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":43,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":44,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":45,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":46,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":47,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":48,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":49,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":50,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":51,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":52,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":53,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":54,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":55,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":56,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":57,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":58,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":59,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":60,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":61,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":62,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.5,"hum":44.0,"fase":"MEDICION","seg":63,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.2,"hum":45.0,"fase":"MEDICION","seg":64,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.2,"hum":45.0,"fase":"MEDICION","seg":65,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":66,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":67,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":68,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":69,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":70,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":71,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":72,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":73,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":74,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":75,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":76,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":77,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":78,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":79,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":80,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":81,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":82,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":83,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":84,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":45.0,"fase":"MEDICION","seg":85,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"MEDICION","seg":86,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"MEDICION","seg":87,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"MEDICION","seg":88,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"MEDICION","seg":89,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"PURGA","seg":0,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":46.0,"fase":"PURGA","seg":1,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":47.0,"fase":"PURGA","seg":2,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":47.0,"fase":"PURGA","seg":3,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":47.0,"fase":"PURGA","seg":4,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":47.0,"fase":"PURGA","seg":5,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":6,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":7,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":8,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":9,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":10,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":11,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":12,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":13,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":14,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":15,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":16,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":17,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":18,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":19,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":20,"alerta":"NORMAL","mute":false}
+{"co":0.0,"lpg":0.0,"temp":24.1,"hum":48.0,"fase":"PURGA","seg":21,"alerta":"NORMAL","mute":false}
